@@ -1,6 +1,4 @@
-import { createStore } from 'redux';
-
-let id = 0;
+let nextId = 0;
 
 const ADD_TODO = 'ADD_TODO';
 const REMOVE_TODO = 'REMOVE_TODO';
@@ -17,7 +15,7 @@ const todo = (state = initialTodo, action) => {
 
 		case ADD_TODO:
 			return Object.assign({}, state, {
-				id: id++,
+				id: nextId++,
 				text: action.text,
 			});
 
@@ -50,21 +48,14 @@ const todos = (state = [], action) => {
 	}
 };
 
-const store = createStore(todos);
+export default todos;
 
-store.add = (_id, _text) => {
-  store.dispatch({
-    type: ADD_TODO,
-    id: _id,
-    text: _text,
-  });
-};
+export const addTodo = (text) => ({
+	type: ADD_TODO,
+	text,
+});
 
-store.toggle = (_id) => {
-  store.dispatch({
-    type: TOGGLE_TODO,
-    id: _id,
-  });
-};
-
-export default store;
+export const toggleTodo = (id) => ({
+	type: TOGGLE_TODO,
+	id,
+});
