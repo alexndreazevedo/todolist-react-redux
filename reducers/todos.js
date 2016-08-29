@@ -26,7 +26,7 @@ const todo = (state = initialTodo, action) => {
 			}
 
 			return Object.assign({}, state, {
-				completed: !state.completed
+				completed: !state.completed,
 			});
 
 		default:
@@ -38,7 +38,9 @@ const todos = (state = [], action) => {
 	switch (action.type) {
 
 		case ADD_TODO:
-			return state.concat([todo(undefined, action)]);
+			return state.concat([
+				todo(undefined, action),
+			]);
 
 		case TOGGLE_TODO:
 			return state.map(_todo => todo(_todo, action));

@@ -1,17 +1,19 @@
 import React from 'react';
+import { ListGroupItem, Checkbox } from 'react-bootstrap';
+
 import { connect } from 'react-redux';
 import { toggleTodo } from './reducers/todos';
 
-let TodoItem = ({ todo, onToggle }) => (
-  <li>
-    <a
-      href="#"
-      onClick={() => onToggle(todo.id)}
-      style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}
-    >
+const TodoItem = ({ todo, onToggle }) => (
+  <ListGroupItem
+    onClick={() => onToggle(todo.id)}
+    bsStyle={ todo.completed ? 'success' : 'danger' }>
+    <Checkbox
+      value={todo.completed}
+      checked={todo.completed}>
       { todo.text }
-    </a>
-  </li>
+    </Checkbox>
+  </ListGroupItem>
 );
 
 const mapDispatchToProps = (dispatch) => ({

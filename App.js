@@ -1,16 +1,20 @@
-import React, { PropTypes, Component } from 'react';
-import TodoHeader from './TodoHeader';
-import TodoList from './TodoList';
+import React from 'react';
+import { Grid, Row, Col } from 'react-bootstrap';
+import Navigation from './Navigation';
 
-const App = () => (
-	<div>
-		<header>
-			<TodoHeader />
-		</header>
-		<main>
-			<TodoList />
-		</main>
-	</div>
+import routes from './routes';
+
+const App = ({ children }) => (
+  <div>
+    <Navigation routes={routes} />
+    <Grid>
+      <Row>
+        <Col md={12}>
+          {children}
+        </Col>
+      </Row>
+    </Grid>
+  </div>
 );
 
 export default App;

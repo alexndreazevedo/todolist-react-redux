@@ -1,16 +1,15 @@
 import React from 'react';
+import { ListGroup } from 'react-bootstrap';
+
 import { connect } from 'react-redux';
 import TodoItem from './TodoItem';
 
-let TodoList = ({ todos, onToggle }) => (
-  <ul>
+const TodoList = ({ todos, onToggle }) => (
+  <ListGroup>
     {todos.map(todo => (
-      <TodoItem
-        key={ todo.id }
-        todo={ todo }
-      />
+      <TodoItem key={ todo.id } todo={ todo } />
     ))}
-  </ul>
+  </ListGroup>
 );
 
 const mapStateToProps = (state) => ({
